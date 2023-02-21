@@ -6,11 +6,11 @@ metadata:
   labels:
     app: redis-server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: redis-server
-      tier: frontend
+      tier: backend
   template:
     metadata:
       labels:
