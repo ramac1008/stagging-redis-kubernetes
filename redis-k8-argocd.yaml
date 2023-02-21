@@ -21,7 +21,10 @@ spec:
       - name: redis
         image: redislabs/redismod:latest
         command: ["redis-server"]
-        args: ["--loadmodule", "/usr/lib/redis/modules/redisjson.so"]
+        args: ["--loadmodule", "/usr/lib/redis/modules/rejson.so"]
+        env:
+        - name: REDIS_PASSWORD
+          value: r0ck3td0ct0r
         ports:
         - containerPort: 6379
         resources:
