@@ -2,18 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
+  namespace: argocd
+  labels:
+    app: redis-server
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: redis
+      app: redis-server
+      tier: frontend
   template:
     metadata:
       labels:
-        app: redis
-    spec:
+        app: redis-server
+        tier: backend
+    spec: # Pod spec
       containers:
-        - name: redis
-          image: redis:latest
-          ports:
-            - containerPort: 6379
+      - name: redis
+        image: redis:latest
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            memory: "16Mi"
+            cpu: "50m"    # 500milliCPUs (1/2 CPU)
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
