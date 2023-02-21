@@ -21,7 +21,7 @@ spec:
       - name: redis
         image: redislabs/redismod:latest
         command: ["redis-server"]
-          args: ["--requirepass", "r0ck3td0ct0r", "--loadmodule", "/usr/lib/redis/modules/rejson.so"]
+        args: ["--requirepass", "r0ck3td0ct0r", "--loadmodule", "/usr/lib/redis/modules/rejson.so"]
         env:
         - name: REDIS_PASSWORD
           value: r0ck3td0ct0r
