@@ -19,7 +19,9 @@ spec:
     spec: # Pod spec
       containers:
       - name: redis
-        image: redis:latest
+        image: redislabs/redismod:latest
+        command: ["redis-server"]
+        args: ["--loadmodule", "/usr/lib/redis/modules/redisjson.so"]
         ports:
         - containerPort: 6379
         resources:
